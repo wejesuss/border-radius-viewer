@@ -1,6 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
 * {
     margin: 0;
     border: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fefefebc;
+    font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper .box {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    border: dotted rgba(0, 0, 0, 0.6) 2px;
+}
+
+.box .border-radius {
+    background-image: linear-gradient(-225deg, #fff 0%, 
+        #3112a309 60%, 
+        #a200ff0a 40%, #411bec83 100%),
+        linear-gradient(45deg, #7159c1 40%, #8c20becb 100%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
+}
+
+.box .topLeft,
+.box .topRight,
+.box .bottomLeft,
+.box .bottomRight {
+    position: absolute;
+}
+
+.box .topLeft::before,
+.box .topRight::before,
+.box .bottomLeft::before,
+.box .bottomRight::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: -9px;
+    width: 1rem;
+    height: 1rem;
+    background: #ffffffde;
+    border: 1px solid #000022d0;
+}
+
+.box .topLeft {
+    top: 0;
+    left: 0;
+}
+
+.box .topRight {
+    top: 0;
+    right: 0;
+}
+
+.box .bottomLeft {
+    bottom: 0;
+    left: 0;
+}
+
+.box .bottomRight {
+    bottom: 0;
+    right: 0;
 }
