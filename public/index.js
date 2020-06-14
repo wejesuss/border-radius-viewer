@@ -3,6 +3,11 @@ const box = document.querySelector(".box")
 const borderRadius = document.querySelector(".border-radius")
 let parentElement = dragField
 
+const boxSize = {
+    width: borderRadius.offsetWidth,
+    height: borderRadius.offsetHeight
+}
+
 const topLeft = document.querySelector(".topLeft")
 const topRight = document.querySelector(".topRight")
 const bottomLeft = document.querySelector(".bottomLeft")
@@ -77,21 +82,28 @@ function moveOnDrag(event) {
     if(actualTarget && (actualTarget === "topRight" || actualTarget === "bottomLeft")) {
         const parentPosition = getPosition(parentElement)
         const boxPosition = box.getBoundingClientRect()
-        mousePosition = (event.clientY - parentPosition.y - boxPosition.y) < 0 ? 0 : (event.clientY - parentPosition.y - boxPosition.y) > 346 ? 346 : (event.clientY - parentPosition.y - boxPosition.y)
+        mousePosition = (event.clientY - parentPosition.y - boxPosition.y) < 0 ? 0 : (event.clientY - parentPosition.y - boxPosition.y) > boxSize.height ? boxSize.height : (event.clientY - parentPosition.y - boxPosition.y)
     } else {
         const parentPosition = getPosition(parentElement)
-        mousePosition = (event.clientX - parentPosition.x) < 0 ? 0 : (event.clientX - parentPosition.x) > 346 ? 346 : event.clientX - parentPosition.x    
+        mousePosition = (event.clientX - parentPosition.x) < 0 ? 0 : (event.clientX - parentPosition.x) > boxSize.width ? boxSize.width : (event.clientX - parentPosition.x)
     }
 
-    if(actualTarget && (actualTarget === "bottomRight" || actualTarget === "bottomLeft"))
-        mousePosition = 346 - mousePosition
+    if(actualTarget && actualTarget === "bottomRight") {
+        mousePosition = boxSize.width - mousePosition
+    }
+    
+    if(actualTarget && actualTarget === "bottomLeft") {
+        mousePosition = boxSize.height - mousePosition
+    }
 
-    if(actualTarget) 
+    if(actualTarget) {
         borderRadiusValues[actualTarget] = mousePosition
+    }
 
     const result = updateSpanPosition(mousePosition, actualTarget)
-    if(result)
+    if(result) {
         updateRadius()
+    }
 }
 
 function updateSpanPosition(position, actualTarget) {
@@ -112,8 +124,8 @@ function updateRadius() {
     const bottomRight = borderRadiusValues.bottomRight
 
     borderRadius.style["border-radius"] = 
-    `${topLeft}px ${346 - topLeft}px ${bottomRight}px ${346 - bottomRight}px
-    / ${346 - bottomLeft}px ${topRight}px ${346 - topRight}px ${bottomLeft}px
+    `${topLeft}px ${boxSize.width - topLeft}px ${bottomRight}px ${boxSize.width - bottomRight}px
+    / ${boxSize.height - bottomLeft}px ${topRight}px ${boxSize.height - topRight}px ${bottomLeft}px
     `
 }
 
