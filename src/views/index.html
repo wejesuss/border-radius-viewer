@@ -8,7 +8,7 @@
     <title>Border Radius Viewer</title>
 </head>
 <body>
-    <div class="dragField">
+    <section class="dragField">
         <div class="wrapper">
             <div class="box">
                 <div class="border-radius">
@@ -21,7 +21,14 @@
                 <span class="bottomRight"></span>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="changeSize">
+        <label for="width">Width:</label>
+        <input type="number" id="width" min="50" max="2000" value="350">
+        <label for="height">Height:</label>
+        <input type="number" id="height" min="50" max="2000" value="350">
+    </section>
 
     <script src="/index.js" defer></script>
 </body>
