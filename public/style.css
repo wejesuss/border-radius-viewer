@@ -89,3 +89,36 @@ body {
     bottom: 0;
     right: 0;
 }
+
+section.changeSize {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    height: 32px;
+    transform: translateX(-50%);
+}
+
+section.changeSize label {
+    margin-right: 8px;
+    color: rgba(133, 133, 133, 0.6);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+}
+
+section.changeSize input {
+    background-color: #9b85e4;
+    padding: 8px;
+    width: 80px;
+    margin-right: 16px;
+    color: #e7e7e7;
+    font-size: 16px;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+}
+
+section.changeSize input::-webkit-inner-spin-button,
+section.changeSize input::-webkit-outer-spin-button {
+    height: 25px;
+    width: 25px;
+}
