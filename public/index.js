@@ -46,25 +46,25 @@ const positions = {
     spanTopLeft: {
         topLeft,
         changePosition: function (position) {
-            this.topLeft.style.left = `${position}px`
+            this.topLeft.style.left = `${position}%`
         }
     },
     spanTopRight: {
         topRight,
         changePosition: function (position) {
-            this.topRight.style.top = `${position}px`
+            this.topRight.style.top = `${position}%`
         }
     },
     spanBottomLeft: {
         bottomLeft,
         changePosition: function (position) {
-            this.bottomLeft.style.bottom = `${position}px`
+            this.bottomLeft.style.bottom = `${position}%`
         }
     },
     spanBottomRight: {
         bottomRight,
         changePosition: function (position) {
-            this.bottomRight.style.right = `${position}px`
+            this.bottomRight.style.right = `${position}%`
         }
     }
 }
@@ -83,7 +83,7 @@ function restart() {
     boxSize = getSizes()
 }
 
-function changeBoxSize() {
+function insertChangeBoxSizeListener() {
     const widthInput = document.getElementById("width")
     const heightInput = document.getElementById("height")
     widthInput.onchange = () => {
@@ -106,32 +106,38 @@ function leaveDrag(event) {
 
 function moveOnDrag(event) {
     document.addEventListener("mouseup", leaveDrag)
-    let mousePosition = 0
+    let mousePosition = 0,
+        percentRadius = 0
 
     if (actualTarget && (actualTarget === "topRight" || actualTarget === "bottomLeft")) {
         const parentPosition = getPosition(parentElement)
         const boxPosition = box.getBoundingClientRect()
         mousePosition = (event.clientY - parentPosition.y - boxPosition.y) < 0 ? 0 : (event.clientY - parentPosition.y - boxPosition.y) > boxSize.height ? boxSize.height : (event.clientY - parentPosition.y - boxPosition.y)
+        percentRadius = Math.round(convertPixelToPercentage(mousePosition, "height"))
     } else {
         const parentPosition = getPosition(parentElement)
         mousePosition = (event.clientX - parentPosition.x) < 0 ? 0 : (event.clientX - parentPosition.x) > boxSize.width ? boxSize.width : (event.clientX - parentPosition.x)
+        percentRadius = Math.round(convertPixelToPercentage(mousePosition, "width"))
     }
 
     if (actualTarget && actualTarget === "bottomRight") {
         mousePosition = boxSize.width - mousePosition
+        percentRadius = Math.round(convertPixelToPercentage(mousePosition, "width"))
     }
 
     if (actualTarget && actualTarget === "bottomLeft") {
         mousePosition = boxSize.height - mousePosition
+        percentRadius = Math.round(convertPixelToPercentage(mousePosition, "height"))
     }
 
     if (actualTarget) {
-        borderRadiusValues[actualTarget] = mousePosition
+        borderRadiusValues[actualTarget] = percentRadius
     }
-
-    const result = updateSpanPosition(mousePosition, actualTarget)
+    
+    const result = updateSpanPosition(percentRadius, actualTarget)
     if (result) {
-        updateRadius()
+        const border = updateRadius()
+        showBorderRadiusProperty(border)
     }
 }
 
@@ -151,11 +157,12 @@ function updateRadius() {
     const topRight = borderRadiusValues.topRight
     const bottomLeft = borderRadiusValues.bottomLeft
     const bottomRight = borderRadiusValues.bottomRight
-
-    borderRadius.style["border-radius"] =
-        `${topLeft}px ${boxSize.width - topLeft}px ${bottomRight}px ${boxSize.width - bottomRight}px
-    / ${boxSize.height - bottomLeft}px ${topRight}px ${boxSize.height - topRight}px ${bottomLeft}px
+    const border = `${topLeft}% ${100 - topLeft}% ${bottomRight}% ${100 - bottomRight}%
+    / ${100 - bottomLeft}% ${topRight}% ${100 - topRight}% ${bottomLeft}%
     `
+
+    borderRadius.style["border-radius"] = border
+    return border
 }
 
 function getPosition(element) {
@@ -174,7 +181,26 @@ function getPosition(element) {
     }
 }
 
-changeBoxSize()
+function showBorderRadiusProperty(border) {
+    let borderRadiusOfXAndY = border
+    .split("/")
+    .map(border => border
+        .trim()
+        .split("%")
+        .map(border => Number(border.trim()) + "%")
+    )
+    .map(border => border.slice(0, -1))
+
+    document.querySelector(".borderRadiusValues output").innerHTML = borderRadiusOfXAndY
+}
+
+function convertPixelToPercentage(pixelValue, baseComparation) {
+    const percent = Number(pixelValue / boxSize[baseComparation] * 100)
+
+    return percent
+}
+
+insertChangeBoxSizeListener()
 
 topLeft.addEventListener("mousedown", function (event) {
     actualTarget = "topLeft"
