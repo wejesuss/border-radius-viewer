@@ -122,3 +122,23 @@ section.changeSize input::-webkit-outer-spin-button {
     height: 25px;
     width: 25px;
 }
+
+section.borderRadiusValues {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    height: 32px;
+    transform: translateX(-50%);
+}
+
+section.borderRadiusValues output {
+    background: #efb22b;
+    font-size: 1.3rem;
+    color: #480b0b;
+    font-weight: 500;
+}
