@@ -191,7 +191,7 @@ function showBorderRadiusProperty(border) {
     )
     .map(border => border.slice(0, -1))
 
-    document.querySelector(".borderRadiusValues output").innerHTML = borderRadiusOfXAndY
+    document.querySelector(".borderRadiusValues span").innerHTML = borderRadiusOfXAndY.join(" / ").replace(/,/g, " ")
 }
 
 function convertPixelToPercentage(pixelValue, baseComparation) {
@@ -223,3 +223,22 @@ bottomLeft.addEventListener("mousedown", function (event) {
 })
 
 document.addEventListener("dragstart", (event) => event.preventDefault())
+
+// copy border-radius
+const copyButton = document.querySelector(".borderRadiusValues > button")
+
+copyButton.addEventListener("click", () => {
+    const input = document.createElement("input")
+    input.style.position = "absolute"
+    input.style.left = "-500%"
+    document.body.style.overflow = "hidden"
+
+    input.value = document.querySelector(".borderRadiusValues > span").innerHTML
+    document.body.appendChild(input)
+    input.select()
+    input.setSelectionRange(0, 99999)
+
+    document.execCommand("copy")
+    document.body.style.overflow = "initial"
+    document.body.removeChild(input)
+})
