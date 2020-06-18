@@ -113,7 +113,7 @@ section.changeSize input {
     margin-right: 16px;
     color: #e7e7e7;
     font-size: 16px;
-    outline: none;
+    outline-color: rebeccapurple;
     font-family: "Roboto", sans-serif;
 }
 
@@ -129,16 +129,43 @@ section.borderRadiusValues {
     left: 50%;
     box-sizing: content-box;
     display: flex;
+    flex: 1;
+    width: 42%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 8px;
     height: 32px;
     transform: translateX(-50%);
 }
 
-section.borderRadiusValues output {
+section.borderRadiusValues h3 {
+    color: rebeccapurple;
+    width: -webkit-fill-available;
+}
+
+section.borderRadiusValues span {
     background: #efb22b;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #480b0b;
     font-weight: 500;
+    padding: 8px;
+    height: 2em;
+    min-width: 350px;
+    border-radius: 4px 0 0 4px;
+}
+
+section.borderRadiusValues button {
+    width: 50%;
+    height: 2em;
+    padding: 8px 16px;
+    background: #f3a802;
+    border-radius: 0 4px 4px 0px;
+    color: #fffeff;
+    font-size: 19px;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+section.borderRadiusValues button:hover {
+    background-color: #7159c1;
 }
