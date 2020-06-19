@@ -20,7 +20,7 @@ body {
 
 .dragField {
     height: 100vh;
-    width: 350px;
+    width: 310px;
     margin: 0 auto;
 }
 
@@ -32,8 +32,8 @@ body {
 }
 
 .wrapper .box {
-    width: 350px;
-    height: 350px;
+    width: 310px;
+    height: 310px;
     position: relative;
     border: dotted rgba(0, 0, 0, 0.6) 2px;
 }
@@ -168,4 +168,68 @@ section.borderRadiusValues button {
 
 section.borderRadiusValues button:hover {
     background-color: #7159c1;
+}
+
+@media (min-width: 1600px) {
+    .dragField {
+        height: 100vh;
+        width: 450px;
+    }
+    .wrapper .box {
+        width: 450px;
+        height: 450px;
+    }
+    section.borderRadiusValues {
+        bottom: 12% !important;
+        width: 30% !important;
+    }
+    section.borderRadiusValues h3 {
+        font-size: 28px;
+    }
+    section.borderRadiusValues span {
+        font-size: 1.6rem;
+        min-width: 400px;
+    }
+    section.borderRadiusValues button {
+        font-size: 25px;
+    }
+    section.changeSize {
+        zoom: 1.6;
+    }
+}
+
+@media (min-width: 1300px) {
+    section.borderRadiusValues {
+        bottom: 8%;
+        width: 42%;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+    section.borderRadiusValues {
+        bottom: 8%;
+        width: 55%;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+    section.borderRadiusValues {
+        bottom: 8%;
+        width: 60%;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 900px) {
+    section.borderRadiusValues {
+        bottom: 8%;
+        width: 80%;
+    }
+    section.borderRadiusValues span {
+        font-size: 1.2rem;
+        min-width: 360px;
+        height: 1.9em;
+    }
+    section.borderRadiusValues button {
+        font-size: 18px;
+    }
 }
