@@ -26,11 +26,11 @@ Completed
 
 ## :information_source: Sobre
 
-Ajuda a visualizar e controlar a propriedade borde-radius CSS de um elemento HTML
+Ajuda a visualizar e controlar a propriedade border-radius CSS de um elemento HTML
 
 ## :interrobang: Motivo
 
-Muitas vezes temos dificuldade em adicionar bordas como queremos, nos deixando na tentativa e erro... ou você pode usar um Border Radius Viewer.
+Muitas vezes temos dificuldade em adicionar/remover bordas como queremos, nos deixando na tentativa e erro... ou você pode usar um Border Radius Viewer.
 
 ## :rocket: Tecnologias Utilizadas
 
@@ -40,6 +40,15 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 - Express
 - HTML
 - CSS
+
+## :rocket: Como Usar
+
+Você pode baixar e rodar o projeto da seguinte maneira:
+
+1. Clone o repositório
+2. Rode `npm install`
+3. Acesse seu navegador em **http://localhost:3000**
+4. Divirta-se!
 
 ## Licença
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
