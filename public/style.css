@@ -233,3 +233,59 @@ section.borderRadiusValues button:hover {
         font-size: 18px;
     }
 }
+
+@media (min-width: 100px) and (max-width: 700px) {
+    .dragField {
+        height: 112vh;
+        width: 280px;
+        top: 50%;
+        left: 45%;
+        position: absolute;
+        transform: translate(-40%, -50%);
+    }
+    .wrapper .box {
+        width: 280px;
+        height: 280px;
+    }
+    section.borderRadiusValues {
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        box-sizing: border-box;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        height: 90px;
+        transform: translateX(-44%);
+    }
+    section.borderRadiusValues h3 {
+        font-size: 14px;
+    }
+    section.borderRadiusValues span {
+        font-size: 14px;
+        min-width: 220px;
+        height: 2em;
+    }
+    section.borderRadiusValues button {
+        width: 50%;
+        height: 2em;
+        padding: 0px 16px;
+        font-size: 14px;
+    }
+    section.changeSize {
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-45%);
+    }
+    section.changeSize label {
+        font-size: 16px;
+    }
+}
