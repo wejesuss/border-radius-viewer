@@ -234,14 +234,14 @@ section.borderRadiusValues button:hover {
     }
 }
 
-@media (min-width: 100px) and (max-width: 700px) {
+@media (min-width: 500px) and (max-width: 700px) {
     .dragField {
-        height: 112vh;
+        height: 100vh;
         width: 280px;
-        top: 50%;
-        left: 45%;
+        top: 0%;
+        left: 30%;
         position: absolute;
-        transform: translate(-40%, -50%);
+        transform: translate(0%, 0%);
     }
     .wrapper .box {
         width: 280px;
@@ -287,5 +287,92 @@ section.borderRadiusValues button:hover {
     }
     section.changeSize label {
         font-size: 16px;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 500px) {
+    .dragField {
+        height: 100vh;
+        width: 280px;
+        top: 0%;
+        left: 20%;
+        position: absolute;
+        transform: translate(0%, 0%);
+    }
+    .wrapper .box {
+        width: 280px;
+        height: 280px;
+    }
+    section.borderRadiusValues {
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        box-sizing: border-box;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        height: 90px;
+        transform: translateX(-44%);
+    }
+    section.borderRadiusValues h3 {
+        font-size: 14px;
+    }
+    section.borderRadiusValues span {
+        font-size: 14px;
+        min-width: 220px;
+        height: 2em;
+    }
+    section.borderRadiusValues button {
+        width: 50%;
+        height: 2em;
+        padding: 0px 16px;
+        font-size: 14px;
+    }
+    section.changeSize {
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-45%);
+    }
+    section.changeSize label {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 499px) {
+    .dragField {
+        height: 100vh;
+        width: 280px;
+        top: 0%;
+        left: 18%;
+        position: absolute;
+        transform: translate(0%, 0%);
+    }
+}
+@media (min-width: 341px) and (max-width: 400px) {
+    .dragField {
+        height: 100vh;
+        width: 280px;
+        top: 0%;
+        left: 18%;
+        position: absolute;
+        transform: translate(0%, 0%);
+    }
+}
+@media (min-width: 0px) and (max-width: 340px) {
+    .dragField {
+        height: 100vh;
+        width: 280px;
+        top: 0%;
+        left: 12%;
+        position: absolute;
+        transform: translate(0%, 0%);
     }
 }
