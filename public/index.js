@@ -99,24 +99,35 @@ function insertChangeBoxSizeListener() {
 }
 
 function leaveDrag(event) {
-    document.removeEventListener("mousemove", moveOnDrag)
-    document.removeEventListener("mouseup", leaveDrag)
+    if(event.type.includes("touch")) {
+        document.removeEventListener("touchmove", moveOnDrag)
+        document.removeEventListener("touchend", leaveDrag)
+    } else {
+        document.removeEventListener("mousemove", moveOnDrag)
+        document.removeEventListener("mouseup", leaveDrag)
+    }
     actualTarget = null
 }
 
 function moveOnDrag(event) {
-    document.addEventListener("mouseup", leaveDrag)
+    let personalEventPosition = (event.touches) ? event.touches[0] : event
+    if(event.touches) {
+        document.addEventListener("touchend", leaveDrag)
+    } else {
+        document.addEventListener("mouseup", leaveDrag)
+    }
+
     let mousePosition = 0,
         percentRadius = 0
 
     if (actualTarget && (actualTarget === "topRight" || actualTarget === "bottomLeft")) {
         const parentPosition = getPosition(parentElement)
         const boxPosition = box.getBoundingClientRect()
-        mousePosition = (event.clientY - parentPosition.y - boxPosition.y) < 0 ? 0 : (event.clientY - parentPosition.y - boxPosition.y) > boxSize.height ? boxSize.height : (event.clientY - parentPosition.y - boxPosition.y)
+        mousePosition = (personalEventPosition.clientY - parentPosition.y - boxPosition.y) < 0 ? 0 : (personalEventPosition.clientY - parentPosition.y - boxPosition.y) > boxSize.height ? boxSize.height : (personalEventPosition.clientY - parentPosition.y - boxPosition.y)
         percentRadius = Math.round(convertPixelToPercentage(mousePosition, "height"))
     } else {
         const parentPosition = getPosition(parentElement)
-        mousePosition = (event.clientX - parentPosition.x) < 0 ? 0 : (event.clientX - parentPosition.x) > boxSize.width ? boxSize.width : (event.clientX - parentPosition.x)
+        mousePosition = (personalEventPosition.clientX - parentPosition.x) < 0 ? 0 : (personalEventPosition.clientX - parentPosition.x) > boxSize.width ? boxSize.width : (personalEventPosition.clientX - parentPosition.x)
         percentRadius = Math.round(convertPixelToPercentage(mousePosition, "width"))
     }
 
@@ -222,12 +233,32 @@ bottomLeft.addEventListener("mousedown", function (event) {
     document.addEventListener("mousemove", moveOnDrag)
 })
 
+topLeft.addEventListener("touchstart", function (event) {
+    actualTarget = "topLeft"
+    document.addEventListener("touchmove", moveOnDrag)
+})
+
+topRight.addEventListener("touchstart", function (event) {
+    actualTarget = "topRight"
+    document.addEventListener("touchmove", moveOnDrag)
+})
+
+bottomRight.addEventListener("touchstart", function (event) {
+    actualTarget = "bottomRight"
+    document.addEventListener("touchmove", moveOnDrag)
+})
+
+bottomLeft.addEventListener("touchstart", function (event) {
+    actualTarget = "bottomLeft"
+    document.addEventListener("touchmove", moveOnDrag)
+})
+
 document.addEventListener("dragstart", (event) => event.preventDefault())
 
 // copy border-radius
 const copyButton = document.querySelector(".borderRadiusValues > button")
 
-copyButton.addEventListener("click", () => {
+function copyBorderRadius(event) {
     const input = document.createElement("input")
     input.style.position = "absolute"
     input.style.left = "-500%"
@@ -241,4 +272,7 @@ copyButton.addEventListener("click", () => {
     document.execCommand("copy")
     document.body.style.overflow = "initial"
     document.body.removeChild(input)
-})
+}
+
+copyButton.addEventListener("click", copyBorderRadius)
+copyButton.addEventListener("touch", copyBorderRadius)
