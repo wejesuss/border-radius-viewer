@@ -181,14 +181,14 @@ section.borderRadiusValues button:hover {
     }
     section.borderRadiusValues {
         bottom: 12% !important;
-        width: 30% !important;
+        width: 32% !important;
     }
     section.borderRadiusValues h3 {
         font-size: 28px;
     }
     section.borderRadiusValues span {
         font-size: 1.6rem;
-        min-width: 400px;
+        min-width: 470px;
     }
     section.borderRadiusValues button {
         font-size: 25px;
