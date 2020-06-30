@@ -249,7 +249,7 @@ section.borderRadiusValues button:hover {
     }
     section.borderRadiusValues {
         position: absolute;
-        bottom: 0%;
+        bottom: -3%;
         left: 50%;
         box-sizing: border-box;
         display: flex;
@@ -305,7 +305,7 @@ section.borderRadiusValues button:hover {
     }
     section.borderRadiusValues {
         position: absolute;
-        bottom: 0%;
+        bottom: -8%;
         left: 50%;
         box-sizing: border-box;
         display: flex;
