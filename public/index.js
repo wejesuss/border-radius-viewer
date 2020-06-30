@@ -110,6 +110,7 @@ function leaveDrag(event) {
 }
 
 function moveOnDrag(event) {
+    event.preventDefault()
     let personalEventPosition = (event.touches) ? event.touches[0] : event
     if(event.touches) {
         document.addEventListener("touchend", leaveDrag)
@@ -214,41 +215,49 @@ function convertPixelToPercentage(pixelValue, baseComparation) {
 insertChangeBoxSizeListener()
 
 topLeft.addEventListener("mousedown", function (event) {
+    event.preventDefault()
     actualTarget = "topLeft"
     document.addEventListener("mousemove", moveOnDrag)
 })
 
 topRight.addEventListener("mousedown", function (event) {
+    event.preventDefault()
     actualTarget = "topRight"
     document.addEventListener("mousemove", moveOnDrag)
 })
 
 bottomRight.addEventListener("mousedown", function (event) {
+    event.preventDefault()
     actualTarget = "bottomRight"
     document.addEventListener("mousemove", moveOnDrag)
 })
 
 bottomLeft.addEventListener("mousedown", function (event) {
+    event.preventDefault()
     actualTarget = "bottomLeft"
     document.addEventListener("mousemove", moveOnDrag)
 })
 
 topLeft.addEventListener("touchstart", function (event) {
+    event.preventDefault()
     actualTarget = "topLeft"
     document.addEventListener("touchmove", moveOnDrag)
 })
 
 topRight.addEventListener("touchstart", function (event) {
+    event.preventDefault()
     actualTarget = "topRight"
     document.addEventListener("touchmove", moveOnDrag)
 })
 
 bottomRight.addEventListener("touchstart", function (event) {
+    event.preventDefault()
     actualTarget = "bottomRight"
     document.addEventListener("touchmove", moveOnDrag)
 })
 
 bottomLeft.addEventListener("touchstart", function (event) {
+    event.preventDefault()
     actualTarget = "bottomLeft"
     document.addEventListener("touchmove", moveOnDrag)
 })
