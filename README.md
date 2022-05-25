@@ -50,9 +50,5 @@ Você pode baixar e rodar o projeto da seguinte maneira:
 3. Acesse seu navegador em **http://localhost:3000**
 4. Divirta-se!
 
-### Ou se Preferir:
-
-1. Acesse o site https://border-radius-viewer.herokuapp.com/
-
 ## Licença
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
